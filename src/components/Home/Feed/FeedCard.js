@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Card, Button, Carousel } from 'react-bootstrap';
 
 const FeedCard = (data) => {
-
+console.log(data)
   const mData = data.data;
 
 
@@ -10,7 +10,7 @@ const FeedCard = (data) => {
     return (
       <Carousel interval={2500 + Math.random() * 1000}>
         {
-          mData.img.map((item, key) => (
+          mData.images.map((item, key) => (
             <Carousel.Item key={key}>
               <img
                 className="d-block w-100"
@@ -34,7 +34,7 @@ const FeedCard = (data) => {
         <Card className='border-0' style={{ backgroundColor: '#F7F7F7' }}>
           <CarouselCard />
           <Card.Body>
-            <Card.Title>{mData.location}</Card.Title>
+            <Card.Title>{mData.location.latitude}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Review By: {mData.name}</Card.Subtitle>
             <Card.Text>
               {mData.review}
