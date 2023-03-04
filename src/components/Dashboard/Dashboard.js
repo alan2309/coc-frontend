@@ -1,6 +1,6 @@
 import React from 'react'
 import BrandNavbar from '../common/BrandNavbar'
-import { Col, Container, Row, Nav } from 'react-bootstrap';
+import { Col, Container, Row, Nav, Tab } from 'react-bootstrap';
 import styles from "./Dashboard.module.css";
 import cx from "classnames";
 
@@ -19,8 +19,10 @@ const Dashboard = () => {
     return (
       <>
         <BrandNavbar />
-        <Container fluid>
-          <Row className=''>
+
+
+        {/* <Container fluid className='p-0'>
+          <Row className='m-0'>
             <Col xs={2} sm={2} md={2} className={cx(styles.leftCol, 'p-0')}>
               <Nav variant="pills" defaultActiveKey="0" className={cx('flex-column justify-content-center')}>
                 {
@@ -36,7 +38,35 @@ const Dashboard = () => {
             </Col>
             <Col>data</Col>
           </Row>
-        </Container >
+        </Container > */}
+
+        <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
+          <Row className='m-0'>
+            <Col xs={2} sm={2} md={2} className={cx(styles.leftCol, 'p-0')}>
+              <Nav variant="pills" className="flex-column">
+                {
+                  StackList.map((item, key) => (
+                    <Nav.Item key={key}>
+                      <Nav.Link eventKey={item.title}>{item.title}</Nav.Link>
+                    </Nav.Item>
+                  ))
+                }
+
+              </Nav>
+            </Col>
+
+            <Col className='p-0'>
+              <Tab.Content className='p-0'>
+                {
+                  StackList.map((item, key) => (
+                    <Tab.Pane eventKey={item.title} key={key} className='p-0'>
+                      {item.title}
+                    </Tab.Pane>
+                  ))
+                }
+              </Tab.Content></Col>
+          </Row>
+        </Tab.Container>
       </>
     )
   }
