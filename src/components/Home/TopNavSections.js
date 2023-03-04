@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import Feed from './Feed/Feed';
-
+import './TopNavSections.css'
 
 const TopNavSections = () => {
   const links = [
