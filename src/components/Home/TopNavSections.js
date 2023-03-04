@@ -37,7 +37,6 @@ const TopNavSections = () => {
             links.map((item, key) => (
               <Tab key={key} eventKey={item.eventKey} title={item.title} className='p-0'>
                 {item.eventKey === 'feed' && <Feed />}
-                Hello
               </Tab>
             ))
           }

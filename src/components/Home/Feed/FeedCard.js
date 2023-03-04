@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Card, Button, Carousel } from 'react-bootstrap';
+import { Col, Card, Button, Carousel, Ratio } from 'react-bootstrap';
 
 const FeedCard = (data) => {
 console.log(data)
@@ -12,11 +12,14 @@ console.log(data)
         {
           mData.images.map((item, key) => (
             <Carousel.Item key={key}>
+              <Ratio aspectRatio={'4x3'}>
               <img
-                className="d-block w-100"
+                className="d-block w-100 img-fluid"
                 src={item}
                 alt={`${key + 1} slide`}
               />
+
+              </Ratio>
               {/* <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
