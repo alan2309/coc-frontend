@@ -1,9 +1,11 @@
 import React from "react";
+import AppBinder from "./AppBinder";
 
 function App() {
+
   return (
     <div className="App">
-      Hello
+      <AppBinder />
     </div>
   );
 }
