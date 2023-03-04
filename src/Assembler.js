@@ -20,6 +20,7 @@ const Assembler = () => {
           <Route path="/dash" exact element={<Dashboard />} />
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/mapdata" exact element={<MapData />} />
+          <Route path="/chat" exact element={<MapData />} />
         </Routes>
       </Router>
     </>
