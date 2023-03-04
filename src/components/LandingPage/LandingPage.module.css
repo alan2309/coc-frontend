@@ -1,0 +1,28 @@
+.searchContainer{
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  width: 40%;
+}
+
+.searchIcon{
+  top: 50%;
+  left: 3.5%;
+}
+
+.startTripBtn{
+  position: absolute;
+  top: 17%;
+  right: 2%;
+}
+
+@media screen and (max-width: 768px) {
+  .searchContainer{
+    left: 16%;    
+    width: 70%;
+  } 
+  .searchIcon{
+    top: 50%;
+    left: 1.3rem;
+  }
+}
