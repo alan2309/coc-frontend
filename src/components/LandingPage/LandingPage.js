@@ -21,6 +21,7 @@ import { Navigate, useNavigate } from "react-router";
 import Banner from "./Banner";
 import LandingCards from "./LandingCards";
 import { AppBinderContext } from "../../AppBinderContext";
+import BottomCards from "./BottomCards";
 
 const LandingPage = () => {
   const { isLoaded } = useLoadScript({
@@ -72,7 +73,7 @@ const LandingPage = () => {
           placeholder="Where are you travelling to?"
         />
         <i className={cx(styles.searchIcon, "fa-solid fa-magnifying-glass position-absolute fa-lg")} />
-        <Button onClick={startTrip} className={cx(styles.startTripBtn, "rounded-5")} style={{ "backgroundColor": colors.greyBlack }}>Start trip</Button>
+        <Button onClick={startTrip} className={cx(styles.startTripBtn, "rounded-5")} style={{ "backgroundColor": colors.greyBlack }}><i className="fa-solid fa-plane-departure"></i></Button>
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
@@ -86,14 +87,14 @@ const LandingPage = () => {
   };
 
   return (
-    <>
+    <div style={{ "overflowX": "hidden" }}>
       <BrandNavbar />
 
       <Banner />
       {/* Search Section */}
       <div>
         <Container className={cx(styles.searchContainer, "text-center")}>
-          <Form.Label htmlFor="locSearch" className="display-4 fw-bold">Find A Travel Buddy..</Form.Label>
+          <Form.Label htmlFor="locSearch" className="display-4 fw-bold" id="searcher">Find A Travel Buddy..</Form.Label>
           <PlacesAutocomplete setSelected={setSelected} />
           <Form.Text id="LocationSearch" muted className="fw-bold fs-5" style={{ color: 'black' }}>
             Travelers From 190+ Countries Have Started Over 25000 Trips
@@ -101,8 +102,11 @@ const LandingPage = () => {
         </Container>
       </div>
 
-      <LandingCards />
-    </>
+      <div className="d-flex flex-column gap-5">
+        <LandingCards />
+        <BottomCards />
+      </div>
+    </div>
   );
 };
 
