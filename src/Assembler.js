@@ -14,28 +14,8 @@ const Assembler = () => {
     <>
       <Router>
         <Routes>
-          <Route
-            path="/home"
-            exact
-            element={
-              <Row style={{ margin: "20px 0 0 0" }}>
-                <Col style={{ padding: "10px 90px" }}>
-                  <Home />
-                </Col>
-              </Row>
-            }
-          />
-          <Route
-            path="/"
-            exact
-            element={
-              <Row style={{ margin: "20px 0 0 0" }}>
-                <Col style={{ padding: "10px 90px" }}>
-                  <LandingPage />
-                </Col>
-              </Row>
-            }
-          />
+          <Route path="/home" exact element={<Home />} />
+          <Route path="/" exact element={<LandingPage />} />
         </Routes>
       </Router>
     </>
