@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import MapData from "./components/MapData";
+import Chat from "./components/Chat/Chat";
 
 // import { AppBinderContext } from './AppBinderContext';
 
@@ -20,7 +21,7 @@ const Assembler = () => {
           <Route path="/dash" exact element={<Dashboard />} />
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/mapdata" exact element={<MapData />} />
-          <Route path="/chat" exact element={<MapData />} />
+          <Route path="/chat" exact element={<Chat />} />
         </Routes>
       </Router>
     </>
