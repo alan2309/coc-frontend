@@ -11,7 +11,7 @@ const BrandNavbar = () => {
     return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container fluid>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">Travel Buddy</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
 
