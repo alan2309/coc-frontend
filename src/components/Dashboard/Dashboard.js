@@ -3,6 +3,7 @@ import BrandNavbar from '../common/BrandNavbar'
 import { Col, Container, Row, Nav, Tab } from 'react-bootstrap';
 import styles from "./Dashboard.module.css";
 import cx from "classnames";
+import MyTrips from './MyTrips/MyTrips';
 
 const Dashboard = () => {
 
@@ -10,7 +11,7 @@ const Dashboard = () => {
 
     const StackList = [
       { id: 0, title: 'Home', linkTo: '', icon: '' },
-      { id: 1, title: 'My Trip', linkTo: '', icon: '' },
+      { id: 1, title: 'My Trips', linkTo: '', icon: '' },
       { id: 2, title: 'Notification', linkTo: '', icon: '' },
       { id: 3, title: 'Profile', linkTo: '', icon: '' },
       { id: 4, title: 'Chats', linkTo: '', icon: '' },
@@ -60,7 +61,7 @@ const Dashboard = () => {
                 {
                   StackList.map((item, key) => (
                     <Tab.Pane eventKey={item.title} key={key} className='p-0'>
-                      {item.title}
+                      {item.title === 'My Trips' && <MyTrips />}
                     </Tab.Pane>
                   ))
                 }
