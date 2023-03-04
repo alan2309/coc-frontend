@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import Feed from './Feed/Feed';
-
+import './TopNavSections.css'
 
 const TopNavSections = () => {
   const links = [
@@ -37,7 +37,6 @@ const TopNavSections = () => {
             links.map((item, key) => (
               <Tab key={key} eventKey={item.eventKey} title={item.title} className='p-0'>
                 {item.eventKey === 'feed' && <Feed />}
-                Hello
               </Tab>
             ))
           }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BrandNavbar from "../common/BrandNavbar";
-import { Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -15,18 +15,25 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import axiosInstance from "../../axiosInstance";
+import { Navigate, useNavigate } from "react-router";
 
 const LandingPage = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyC_2ABFZTAwaDLCgP5DKpNM_xrCJvX66Nc",
     libraries: ["places"],
   });
-
+const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     return () => {};
   }, []);
+
+
+  const startTrip = ()=>{
+    // console.log(selected)
+  navigate(`home/${selected.lat}/${selected.lng}`)
+  }
 
   if (!isLoaded) return <div>Loading...</div>;
   return (
@@ -44,6 +51,7 @@ const LandingPage = () => {
             className='rounded-5 p-2'
           />*/}
           <PlacesAutocomplete setSelected={setSelected} />
+          <Button onClick={startTrip}>Start trip</Button>
           <Form.Text id="LocationSearch" muted>
             Search for you desired location!
           </Form.Text>
