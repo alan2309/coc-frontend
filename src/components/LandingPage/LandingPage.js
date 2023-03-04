@@ -94,7 +94,7 @@ const LandingPage = () => {
       {/* Search Section */}
       <div>
         <Container className={cx(styles.searchContainer, "text-center")}>
-          <Form.Label htmlFor="locSearch" className="display-4 fw-bold" id="searcher">Find A Travel Buddy..</Form.Label>
+          <Form.Label htmlFor="locSearch" className="display-4 fw-bold" id="searcher">Find A Tripling..</Form.Label>
           <PlacesAutocomplete setSelected={setSelected} />
           <Form.Text id="LocationSearch" muted className="fw-bold fs-5" style={{ color: 'black' }}>
             Travelers From 190+ Countries Have Started Over 25000 Trips

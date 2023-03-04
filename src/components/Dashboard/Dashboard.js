@@ -1,6 +1,6 @@
 import React from 'react'
 import BrandNavbar from '../common/BrandNavbar'
-import { Col, Container, Row, Nav } from 'react-bootstrap';
+import { Col, Container, Row, Nav, Tab } from 'react-bootstrap';
 import styles from "./Dashboard.module.css";
 import cx from "classnames";
 
@@ -19,14 +19,18 @@ const Dashboard = () => {
     return (
       <>
         <BrandNavbar />
-        <Container fluid>
+
+
+        <Tab.Container fluid defaultActiveKey="Home">
           <Row className=''>
             <Col xs={2} sm={2} md={2} className={cx(styles.leftCol, 'p-0')}>
-              <Nav variant="pills" defaultActiveKey="0" className={cx('flex-column justify-content-center')}>
+              <Nav
+                variant="pills"
+                className={cx('flex-column justify-content-center')}>
                 {
                   StackList.map((item, key) => (
                     <Nav.Item key={key} className=''>
-                      <Nav.Link eventKey={item.id} title={item.title}>
+                      <Nav.Link eventKey={item.title} title={item.title}>
                         {item.title}
                       </Nav.Link>
                     </Nav.Item>
@@ -34,9 +38,21 @@ const Dashboard = () => {
                 }
               </Nav>
             </Col>
-            <Col>data</Col>
+
+
+            <Col>
+              <Tab.Content>
+                {
+                  StackList.map((item, key) => (
+                    <Tab.Pane eventKey={item.title} key={key}>
+                      {item.title}
+                    </Tab.Pane>
+                  ))
+                }
+              </Tab.Content>
+            </Col>
           </Row>
-        </Container >
+        </Tab.Container >
       </>
     )
   }
