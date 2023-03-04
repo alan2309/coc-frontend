@@ -3,7 +3,7 @@ import BrandNavbar from "../common/BrandNavbar";
 import { Button, Container, Form } from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import cx from "classnames";
-import styles from "./LandingPage.module.css"
+import styles from "./LandingPage.module.css";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -33,17 +33,15 @@ const LandingPage = () => {
   const [colors] = useContext(AppBinderContext);
 
   useEffect(() => {
-    return () => { };
+    return () => {};
   }, []);
-
 
   const startTrip = () => {
     // console.log(selected)
-    navigate(`home/${selected.lat}/${selected.lng}`)
-  }
+    navigate(`home/${selected.lat}/${selected.lng}`);
+  };
 
   if (!isLoaded) return <div>Loading...</div>;
-
 
   const PlacesAutocomplete = ({ setSelected }) => {
     const {
@@ -61,6 +59,7 @@ const LandingPage = () => {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
       setSelected({ lat, lng });
+      sessionStorage.setItem("formatted_address", results[0].formatted_address);
     };
 
     return (
@@ -72,8 +71,19 @@ const LandingPage = () => {
           className="combobox-input form-control rounded-5 p-3 ps-5 shadow shadow-lg"
           placeholder="Where are you travelling to?"
         />
-        <i className={cx(styles.searchIcon, "fa-solid fa-magnifying-glass position-absolute fa-lg")} />
-        <Button onClick={startTrip} className={cx(styles.startTripBtn, "rounded-5")} style={{ "backgroundColor": colors.greyBlack }}><i className="fa-solid fa-plane-departure"></i></Button>
+        <i
+          className={cx(
+            styles.searchIcon,
+            "fa-solid fa-magnifying-glass position-absolute fa-lg"
+          )}
+        />
+        <Button
+          onClick={startTrip}
+          className={cx(styles.startTripBtn, "rounded-5")}
+          style={{ backgroundColor: colors.greyBlack }}
+        >
+          <i className="fa-solid fa-plane-departure"></i>
+        </Button>
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
@@ -87,16 +97,27 @@ const LandingPage = () => {
   };
 
   return (
-    <div style={{ "overflowX": "hidden" }}>
+    <div style={{ overflowX: "hidden" }}>
       <BrandNavbar />
 
       <Banner />
       {/* Search Section */}
       <div>
         <Container className={cx(styles.searchContainer, "text-center")}>
-          <Form.Label htmlFor="locSearch" className="display-4 fw-bold" id="searcher">Find A Tripling..</Form.Label>
+          <Form.Label
+            htmlFor="locSearch"
+            className="display-4 fw-bold"
+            id="searcher"
+          >
+            Find A Tripling..
+          </Form.Label>
           <PlacesAutocomplete setSelected={setSelected} />
-          <Form.Text id="LocationSearch" muted className="fw-bold fs-5" style={{ color: 'black' }}>
+          <Form.Text
+            id="LocationSearch"
+            muted
+            className="fw-bold fs-5"
+            style={{ color: "black" }}
+          >
             Travelers From 190+ Countries Have Started Over 25000 Trips
           </Form.Text>
         </Container>

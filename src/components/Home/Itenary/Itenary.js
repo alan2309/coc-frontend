@@ -82,6 +82,7 @@ function Itenary() {
           end_date: eDate,
           itinerary: selected_place,
           uid: 2,
+          loc_name: sessionStorage.getItem("formatted_address") || "Goa, India",
         },
       })
       .then((res) => {
