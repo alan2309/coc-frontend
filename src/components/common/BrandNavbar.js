@@ -10,8 +10,8 @@ const BrandNavbar = () => {
   const MainNavbar = () => {
     return (
       <Navbar collapseOnSelect className='sticky-top' expand="lg" bg="light" variant="light">
-        <Container >
-          <Navbar.Brand href="#home">Travel Buddy</Navbar.Brand>
+        <Container fluid>
+          <Navbar.Brand href="#home">Tripling</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
 

@@ -14,7 +14,7 @@ const LandingCards = () => {
   const GridCard = () => {
     return (
       <Container className='p-0 my-5'>
-        <h1 className='text-center fw-bold display-5' style={{ color: themeColors.darkerBlue }}>How Travel Buddy Works</h1>
+        <h1 className='text-center fw-bold display-5' style={{ color: themeColors.darkerBlue }}>How Tripling Works</h1>
         <Container className='p-0' fluid>
           <Row>
             {

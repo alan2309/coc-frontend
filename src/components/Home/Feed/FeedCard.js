@@ -37,7 +37,7 @@ console.log(data)
         <Card className='border-0' style={{ backgroundColor: '#F7F7F7' }}>
           <CarouselCard />
           <Card.Body>
-            <Card.Title>{mData.location.latitude}</Card.Title>
+            <Card.Title>{mData.loc_name}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Review By: {mData.name}</Card.Subtitle>
             <Card.Text>
               {mData.review}
