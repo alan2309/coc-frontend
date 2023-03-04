@@ -1,8 +1,9 @@
-import React,{useEffect,useState} from 'react'
-import FeedCard from './FeedCard';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import FeedCard from "./FeedCard";
+import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router";
 import axios from "axios";
+import axiosInstance from "../../../axiosInstance";
 
 const Feed = () => {
   const { lat, lng } = useParams();
@@ -10,8 +11,8 @@ const Feed = () => {
   const [feeds, setFeeds] = useState([]);
   useEffect(() => {
     const data = async () => {
-      await axios
-        .post("http://localhost:8000/api/get-reviews/", {
+      await axiosInstance
+        .post("get-reviews/", {
           data: { latitude: lat, longitude: lng },
         })
         .then((res) => {
@@ -34,18 +35,15 @@ const Feed = () => {
   // ];
   return (
     <>
-      <Container fluid className='p-0'>
-        <Row className='gx-5'>
-
-          {
-            feeds.map((item, key) => (
-              <FeedCard data={item} key={key} />
-            ))
-          }
+      <Container fluid className="p-0">
+        <Row className="gx-5">
+          {feeds.map((item, key) => (
+            <FeedCard data={item} key={key} />
+          ))}
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Feed
+export default Feed;
