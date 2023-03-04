@@ -4,6 +4,7 @@ import { Col, Container, Row, Nav, Tab } from 'react-bootstrap';
 import styles from "./Dashboard.module.css";
 import cx from "classnames";
 import MyTrips from './MyTrips/MyTrips';
+import Notification from './Notification/Notification';
 
 const Dashboard = () => {
 
@@ -62,6 +63,7 @@ const Dashboard = () => {
                   StackList.map((item, key) => (
                     <Tab.Pane eventKey={item.title} key={key} className='p-0'>
                       {item.title === 'My Trips' && <MyTrips />}
+                      {item.title === 'Notification' && <Notification />}
                     </Tab.Pane>
                   ))
                 }
