@@ -1,9 +1,9 @@
 
 
 .nav-pills {
-    --bs-nav-pills-border-radius: 0.375rem;
+    --bs-nav-pills-border-radius: 1rem;
     --bs-nav-pills-link-active-color: #fff;
-    --bs-nav-pills-link-active-bg: #822268 !important;
-    --bs-nav-link-color: "black";
-    --bs-link-hover-color: "black"
+    --bs-nav-pills-link-active-bg: #5F9AC1 !important;
+    --bs-nav-link-color: black;
+    --bs-link-hover-color: #050517;
 }
