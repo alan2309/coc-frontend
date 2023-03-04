@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
+import Feed from './Feed/Feed';
 
 
 const TopNavSections = () => {
@@ -26,23 +27,26 @@ const TopNavSections = () => {
   const PillTab = () => {
     return (
       <>
-        <Nav variant="pills" justify defaultActiveKey="feed" className='p-0'>
+        <Tabs
+          defaultActiveKey="feed"
+          id="uncontrolled-tab-example"
+          className="mb-3 p-0"
+          variant='pills'
+        >
           {
             links.map((item, key) => (
-              <Nav.Item key={key}>
-                <Nav.Link eventKey={item.eventKey}>{item.title}</Nav.Link>
-              </Nav.Item>
+              <Tab key={key} eventKey={item.eventKey} title={item.title} className='p-0'>
+                {item.eventKey === 'feed' && <Feed />}
+                Hello
+              </Tab>
             ))
           }
-          {/* <Nav.Item>
-            <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-          </Nav.Item> */}
-        </Nav>
+        </Tabs>
       </>
     )
   }
   return (
-    <Container fluid>
+    <Container fluid className='p-0'>
       <Row className='justify-content-center'>
         <PillTab />
         {/* <CustomTab /> */}
