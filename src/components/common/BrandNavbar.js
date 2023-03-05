@@ -15,7 +15,6 @@ const BrandNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
 
-
             <Nav className="me-auto">
               {/* Left Links */}
               <Nav.Link href="/dash">Dash</Nav.Link>
