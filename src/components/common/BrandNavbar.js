@@ -32,7 +32,8 @@ const BrandNavbar = () => {
                 id="collasible-nav-dropdown"
                 align="end"
               >
-                {sessionStorage.getItem("user_data") !== undefined ? (
+                {console.log(sessionStorage.getItem("user_data"))}
+                {sessionStorage.getItem("user_data") !== undefined && sessionStorage.getItem("user_data") !== null ? (
                   <NavDropdown.Item href="/Logout">{"Logout"}</NavDropdown.Item>
                 ) : (
                   <NavDropdown.Item href="/Login">{"Login"}</NavDropdown.Item>
