@@ -17,7 +17,12 @@ const BrandNavbar = () => {
         variant="light"
       >
         <Container fluid>
-          <Navbar.Brand href="/">Tripling</Navbar.Brand>
+          <Navbar.Brand href="/" className="d-flex align-items-center gap-2">
+            <i class="fa-solid fa-mountain-sun"></i>
+            <div>
+              Tripling
+            </div>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
