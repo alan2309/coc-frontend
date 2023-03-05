@@ -2,13 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import { useNavigate } from "react-router";
 import axiosInstance from "../../../axiosInstance";
 
 const Notification = () => {
   const [pending_req, setPending_req] = useState([]);
   useEffect(() => {
+    console.log(JSON.parse(sessionStorage.getItem("user_data"))?.email);
     axiosInstance
-      .post("/notifications/", { data: { uid: 3 } })
+      .post("/notifications/", {
+        data: { uid: JSON.parse(sessionStorage.getItem("user_data"))?.id },
+      })
       .then((res) => {
         console.log(res);
         setPending_req(res.data.reqs);
@@ -54,12 +58,34 @@ const Notification = () => {
                               onClick={(e) => {
                                 axiosInstance
                                   .post("/accept-request/", {
-                                    data: { uid: JSON.parse(sessionStorage.getItem("user_data"))?.id, email: res.email },
+                                    data: {
+                                      uid: JSON.parse(
+                                        sessionStorage.getItem("user_data")
+                                      )?.id,
+                                      email: res.email,
+                                    },
                                   })
-                                  .then((res) => {
-
-                                    axios.post("https://localhost:5000/api/addFriend/",{myemail:JSON.parse(sessionStorage.getItem("user_data"))?.email,email:res.email})
+                                  .then((rees) => {
                                     console.log(res.data);
+
+                                    axios
+                                      .post(
+                                        "http://localhost:5000/api/auth/addFriend/",
+                                        {
+                                          myemail: JSON.parse(
+                                            sessionStorage.getItem("user_data")
+                                          )?.email,
+                                          email: res.email,
+                                        }
+                                      )
+                                      .then((ress) => {
+                                        console.log(ress.data);
+                                      })
+                                      .catch((err) => {
+                                        console.log(err);
+                                      });
+                                    console.log(rees.data);
+                                    //window.location.reload()
                                   })
                                   .catch((err) => {
                                     console.log(err);

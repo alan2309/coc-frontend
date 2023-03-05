@@ -1,7 +1,16 @@
 import React, { useEffect, useState, createRef, useContext } from "react";
-import { Button, Col, Form, Modal, Row, FormSelect, Container, Table } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Form,
+  Modal,
+  Row,
+  FormSelect,
+  Container,
+  Table,
+} from "react-bootstrap";
 import { getPlacesData } from "../../tripMatch";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import PlaceDetails from "./PlaceDetails";
 import axiosInstance from "../../../axiosInstance";
 import { AppBinderContext } from "../../../AppBinderContext";
@@ -29,7 +38,7 @@ function Itenary() {
       .fill()
       .map((_, index) => elRefs[index] || createRef());
     setElRefs(refs);
-    return () => { };
+    return () => {};
   }, [placeData]);
 
   useEffect(() => {
@@ -37,7 +46,7 @@ function Itenary() {
     setCoordinates({ lat: lat, lng: lng });
     addNewDay(1);
 
-    return () => { };
+    return () => {};
   }, []);
 
   function addNewDay(dayNumber) {
@@ -70,6 +79,7 @@ function Itenary() {
   const { lat, lng } = useParams();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const navigate = useNavigate();
 
   function submit(e) {
     e.preventDefault();
@@ -86,12 +96,13 @@ function Itenary() {
           start_date: sDate,
           end_date: eDate,
           itinerary: selected_place,
-          uid: 2,
+          uid: JSON.parse(sessionStorage.getItem("user_data"))?.id,
           loc_name: sessionStorage.getItem("formatted_address") || "Goa, India",
         },
       })
       .then((res) => {
         console.log(res.data);
+        navigate("/dash");
       })
       .catch((err) => {
         console.log(err);
@@ -164,16 +175,29 @@ function Itenary() {
         </Modal.Footer>
       </Modal>
       <Form onSubmit={submit}>
-
-        <div className={cx(styles.topDiv, "shadow-sm d-flex flex-column gap-4 w-50 m-auto text-center align-items-center justify-content-center p-5 rounded-5 my-5")} style={{ "backgroundColor": "#F7F7F7", "border": `5px solid ${themeColors.freshBlue}` }}>
-
+        <div
+          className={cx(
+            styles.topDiv,
+            "shadow-sm d-flex flex-column gap-4 w-50 m-auto text-center align-items-center justify-content-center p-5 rounded-5 my-5"
+          )}
+          style={{
+            backgroundColor: "#F7F7F7",
+            border: `5px solid ${themeColors.freshBlue}`,
+          }}
+        >
           <div className="d-flex flex-column">
-            <Form.Label className="display-6 fw-bold" style={{ "color": themeColors.darkerBlue }}><i className="fa-solid fa-1"></i>. Where do you wish to Travel <i className="fa-solid fa-earth-americas"></i></Form.Label>
+            <Form.Label
+              className="display-6 fw-bold"
+              style={{ color: themeColors.darkerBlue }}
+            >
+              <i className="fa-solid fa-1"></i>. Where do you wish to Travel{" "}
+              <i className="fa-solid fa-earth-americas"></i>
+            </Form.Label>
             <Form.Control
               type="text"
               name="name"
               value={name}
-              placeholder="Enter City Location"
+              placeholder="Enter Trip Name"
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -182,7 +206,6 @@ function Itenary() {
 
           <div className="d-flex align-items-center justify-content-center flex-column gap-3">
             <div className="d-flex justify-content-center align-items-center gap-2">
-
               <Form.Label className="fs-5 text-wrap w-100">
                 Check In:
               </Form.Label>
@@ -195,10 +218,7 @@ function Itenary() {
               />
             </div>
             <div className="d-flex justify-content-center align-items-center gap-2">
-
-              <Form.Label className="fs-5 text-nowrap">
-                Check out:
-              </Form.Label>
+              <Form.Label className="fs-5 text-nowrap">Check out:</Form.Label>
               <Form.Control
                 type="date"
                 id="edate"
@@ -210,16 +230,26 @@ function Itenary() {
           </div>
         </div>
         <div className="text-center mb-3 mt-0">
-        <i className="fa-solid fa-arrow-down fa-2xl text-center"></i>
+          <i className="fa-solid fa-arrow-down fa-2xl text-center"></i>
         </div>
         {/*{selected_place_list.length > 0 &&
           selected_place_list.map((obj, ind) => {
             return obj;
           })}*/}
 
-        <div className={cx(styles.bottomDiv, "shadow mt-5 text-center w-50 mx-auto rounded-5 d-flex flex-column align-items-center justify-content-center p-5 pb-2")} style={{ "backgroundColor": themeColors.freshGreen, "color": themeColors.greyBlack }}>
+        <div
+          className={cx(
+            styles.bottomDiv,
+            "shadow mt-5 text-center w-50 mx-auto rounded-5 d-flex flex-column align-items-center justify-content-center p-5 pb-2"
+          )}
+          style={{
+            backgroundColor: themeColors.freshGreen,
+            color: themeColors.greyBlack,
+          }}
+        >
           <h1 className="p-3 fw-bold">
-            <i className="fa-solid fa-2"></i>. Customize Your Travel...<i className="fa-solid fa-feather"></i>
+            <i className="fa-solid fa-2"></i>. Customize Your Travel...
+            <i className="fa-solid fa-feather"></i>
           </h1>
           {selected_place_list.length > 0 &&
             selected_place_list.map((obj, ind) => {
@@ -240,15 +270,23 @@ function Itenary() {
           </div>
         </div>
         <div className="text-center my-3 mt-5">
-        <i className="fa-solid fa-arrow-down fa-2xl text-center"></i>
+          <i className="fa-solid fa-arrow-down fa-2xl text-center"></i>
         </div>
 
-
         {/* {console.log(selected_place?.length > 1)} */}
-        <div className={cx(styles.iteDiv, "shadow-sm my-5 w-50 mx-auto border border-3 border-dark rounded-5 p-3 ")} style={{ "backgroundColor": "#C4DAE8", }}>
+        <div
+          className={cx(
+            styles.iteDiv,
+            "shadow-sm my-5 w-50 mx-auto border border-3 border-dark rounded-5 p-3 "
+          )}
+          style={{ backgroundColor: "#C4DAE8" }}
+        >
           {console.log(selected_place)}
 
-          <h1 className="fw-bold text-center mb-4 p-3"><i class="fa-solid fa-3"></i>. My Final Internary <i className="fa-solid fa-champagne-glasses"></i></h1>
+          <h1 className="fw-bold text-center mb-4 p-3">
+            <i class="fa-solid fa-3"></i>. My Final Internary{" "}
+            <i className="fa-solid fa-champagne-glasses"></i>
+          </h1>
           <div className="px-5">
             <Table striped bordered hover className="table-dark">
               <thead>
@@ -264,7 +302,10 @@ function Itenary() {
                       {obj.map((obj1, indd) => {
                         return (
                           <tr key={indd}>
-                            <td>{(ind + 1) * (indd + 1) === (ind + 1) && `Day ${ind + 1}`}</td>
+                            <td>
+                              {(ind + 1) * (indd + 1) === ind + 1 &&
+                                `Day ${ind + 1}`}
+                            </td>
                             <td>{obj1.name}</td>
                             {/* <p>{obj1.name} </p> */}
                           </tr>
@@ -277,7 +318,9 @@ function Itenary() {
             </Table>
           </div>
           <div className="w-100 px-5">
-            <Button className="w-100 btn-dark" type="submit">Save</Button>
+            <Button className="w-100 btn-dark" type="submit">
+              Save
+            </Button>
           </div>
         </div>
       </Form>

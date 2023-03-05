@@ -10,7 +10,7 @@ import Chat from "./components/Chat/Chat";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Scrollpop from "./Scrollpop/Scrollpop";
-
+import WLogout from "./components/common/WLogout";
 // import { AppBinderContext } from './AppBinderContext';
 
 const Assembler = () => {
@@ -27,6 +27,7 @@ const Assembler = () => {
           <Route path="/chat" exact element={<Chat />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/register" exact element={<Register />} />
+          <Route path="/logout" exact element={<WLogout />} />
         </Routes>
       </Router>
       <Scrollpop />
