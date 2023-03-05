@@ -11,11 +11,11 @@ const Dashboard = () => {
   const MainDashboard = () => {
 
     const StackList = [
-      { id: 0, title: 'Home', linkTo: '', icon: '' },
-      { id: 1, title: 'My Trips', linkTo: '', icon: '' },
-      { id: 2, title: 'Notification', linkTo: '', icon: '' },
-      { id: 3, title: 'Profile', linkTo: '', icon: '' },
-      { id: 4, title: 'Chats', linkTo: '', icon: '' },
+      { id: 0, title: 'Home', linkTo: '', icon: <i className="fa-solid fa-house"></i> },
+      { id: 1, title: 'My Trips', linkTo: '', icon: <i className="fa-solid fa-suitcase-rolling"></i> },
+      { id: 2, title: 'Notification', linkTo: '', icon: <i className="fa-solid fa-envelope"></i> },
+      { id: 3, title: 'Profile', linkTo: '', icon: <i className="fa-solid fa-user"></i> },
+      { id: 4, title: 'Chats', linkTo: '', icon: <i className="fa-solid fa-comments"></i> },
     ];
 
     return (
@@ -44,12 +44,19 @@ const Dashboard = () => {
 
         <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
           <Row className='m-0'>
-            <Col xs={2} sm={2} md={2} className={cx(styles.leftCol, 'p-0')}>
-              <Nav variant="pills" className="flex-column">
+            <Col xs={4} sm={3} md={2} className={cx(styles.leftCol, 'p-0')}>
+              <Nav variant="pills" className="flex-column p-2 py-3">
                 {
                   StackList.map((item, key) => (
                     <Nav.Item key={key}>
-                      <Nav.Link eventKey={item.title}>{item.title}</Nav.Link>
+                      <Nav.Link eventKey={item.title} className='d-flex align-items-center gap-2'>
+                        <div>
+                          {item.icon}
+                        </div>
+                        <div>
+                          {item.title}
+                        </div>
+                      </Nav.Link>
                     </Nav.Item>
                   ))
                 }

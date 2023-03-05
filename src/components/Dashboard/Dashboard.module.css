@@ -1,6 +1,6 @@
 .leftCol{
   position: sticky;
-  top: 4rem;
+  /* top: 8rem; */
   overflow-y: auto;
   height: 100vh;
   /* border-right: 2px solid black; */

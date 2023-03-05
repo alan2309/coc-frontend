@@ -49,9 +49,9 @@ const TopNavSections = () => {
     return (
       <>
         <Tabs
-          defaultActiveKey="feed"
+          defaultActiveKey="itenary"
           id="uncontrolled-tab-example"
-          className="mb-3 p-0"
+          className="p-0 d-flex align-items-center justify-content-center my-5"
           variant="pills"
         >
           {

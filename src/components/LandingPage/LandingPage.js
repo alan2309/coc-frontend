@@ -33,7 +33,7 @@ const LandingPage = () => {
   const [colors] = useContext(AppBinderContext);
 
   useEffect(() => {
-    return () => {};
+    return () => { };
   }, []);
 
   const startTrip = () => {
@@ -115,7 +115,7 @@ const LandingPage = () => {
           <Form.Text
             id="LocationSearch"
             muted
-            className="fw-bold fs-5"
+            className="fs-5"
             style={{ color: "black" }}
           >
             Travelers From 190+ Countries Have Started Over 25000 Trips
