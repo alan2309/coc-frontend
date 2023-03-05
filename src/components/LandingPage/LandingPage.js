@@ -4,6 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import cx from "classnames";
 import styles from "./LandingPage.module.css";
+import AutoTyping, { BlinkCursor } from "react-auto-typing"
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -104,13 +105,32 @@ const LandingPage = () => {
       {/* Search Section */}
       <div>
         <Container className={cx(styles.searchContainer, "text-center")}>
-          <Form.Label
+        <AutoTyping loop={true}
+          active // <boolean>
+          htmlFor="locSearch"
+            className="display-4 fw-bold"
+            id="searcher"
+          textRef="Find A Tripling.."
+          I // <string>
+          writeSpeed={700} // <number>
+          deleteSpeed={150} // <number>
+          delayToWrite={1000} // <number>
+          delayToDelete={100000} // <number>
+          
+        />
+        <BlinkCursor
+        
+        className="display-4 fw-bold"
+          active // <boolean>
+          blinkSpeed={10000} // <number>
+        />
+          {/*<Form.Label
             htmlFor="locSearch"
             className="display-4 fw-bold"
             id="searcher"
           >
             Find A Tripling..
-          </Form.Label>
+          </Form.Label>*/}
           <PlacesAutocomplete setSelected={setSelected} />
           <Form.Text
             id="LocationSearch"

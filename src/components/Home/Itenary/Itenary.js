@@ -165,7 +165,7 @@ function Itenary() {
       </Modal>
       <Form onSubmit={submit}>
 
-        <div className={cx(styles.topDiv, "d-flex flex-column gap-4 w-50 m-auto text-center align-items-center justify-content-center p-5 rounded-5 my-5")} style={{ "backgroundColor": "#F7F7F7", "border": `5px solid ${themeColors.freshBlue}` }}>
+        <div className={cx(styles.topDiv, "shadow-sm d-flex flex-column gap-4 w-50 m-auto text-center align-items-center justify-content-center p-5 rounded-5 my-5")} style={{ "backgroundColor": "#F7F7F7", "border": `5px solid ${themeColors.freshBlue}` }}>
 
           <div className="d-flex flex-column">
             <Form.Label className="display-6 fw-bold" style={{ "color": themeColors.darkerBlue }}><i className="fa-solid fa-1"></i>. Where do you wish to Travel <i className="fa-solid fa-earth-americas"></i></Form.Label>
@@ -209,13 +209,15 @@ function Itenary() {
             </div>
           </div>
         </div>
-
+        <div className="text-center mb-3 mt-0">
+        <i className="fa-solid fa-arrow-down fa-2xl text-center"></i>
+        </div>
         {/*{selected_place_list.length > 0 &&
           selected_place_list.map((obj, ind) => {
             return obj;
           })}*/}
 
-        <div className={cx(styles.bottomDiv, "mt-5 text-center w-50 mx-auto rounded-5 d-flex flex-column align-items-center justify-content-center p-5 pb-2")} style={{ "backgroundColor": themeColors.freshGreen, "color": themeColors.greyBlack }}>
+        <div className={cx(styles.bottomDiv, "shadow mt-5 text-center w-50 mx-auto rounded-5 d-flex flex-column align-items-center justify-content-center p-5 pb-2")} style={{ "backgroundColor": themeColors.freshGreen, "color": themeColors.greyBlack }}>
           <h1 className="p-3 fw-bold">
             <i className="fa-solid fa-2"></i>. Customize Your Travel...<i className="fa-solid fa-feather"></i>
           </h1>
@@ -237,10 +239,13 @@ function Itenary() {
             </Button>
           </div>
         </div>
+        <div className="text-center my-3 mt-5">
+        <i className="fa-solid fa-arrow-down fa-2xl text-center"></i>
+        </div>
 
 
         {/* {console.log(selected_place?.length > 1)} */}
-        <div className={cx(styles.iteDiv, "my-5 w-50 mx-auto border border-3 border-dark rounded-5 p-3 ")} style={{ "backgroundColor": "#C4DAE8", }}>
+        <div className={cx(styles.iteDiv, "shadow-sm my-5 w-50 mx-auto border border-3 border-dark rounded-5 p-3 ")} style={{ "backgroundColor": "#C4DAE8", }}>
           {console.log(selected_place)}
 
           <h1 className="fw-bold text-center mb-4 p-3"><i class="fa-solid fa-3"></i>. My Final Internary <i className="fa-solid fa-champagne-glasses"></i></h1>
