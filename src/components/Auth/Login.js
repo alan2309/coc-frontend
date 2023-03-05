@@ -69,7 +69,7 @@ export default function Login() {
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
             {/* <img src={Logo} alt="logo" /> */}
-            <h1 className="fw-bold" style={{ color: "#333333" }}>Trippling<i class="fa-solid fa-mountain-sun"></i></h1>
+            <h1 className="fw-bold" style={{ color: "#333333" }}>Tripling<i class="fa-solid fa-mountain-sun"></i></h1>
           </div>
           <input
             type="text"

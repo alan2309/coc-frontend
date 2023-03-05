@@ -66,7 +66,7 @@ export default function Register() {
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand d-flex flex-column">
             {/*<img src={Logo} alt="logo" />*/}
-            <h1 className="fw-bold">Trippling<i class="fa-solid fa-mountain-sun"></i></h1>
+            <h1 className="fw-bold">Tripling<i class="fa-solid fa-mountain-sun"></i></h1>
             <h3 className="fw-bold" style={{ color: "#FFFFFF" }}>Register</h3>
           </div>
           <input
