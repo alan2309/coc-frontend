@@ -30,7 +30,7 @@ const Assembler = () => {
           <Route path="/logout" exact element={<WLogout />} />
         </Routes>
       </Router>
-      <Scrollpop />
+      {sessionStorage.getItem("user_data") !== undefined && sessionStorage.getItem("user_data") !== null && <Scrollpop />}
     </>
   );
 };
