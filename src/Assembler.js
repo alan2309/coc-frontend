@@ -9,6 +9,7 @@ import MapData from "./components/MapData";
 import Chat from "./components/Chat/Chat";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import Scrollpop from "./Scrollpop/Scrollpop";
 
 // import { AppBinderContext } from './AppBinderContext';
 
@@ -28,6 +29,7 @@ const Assembler = () => {
           <Route path="/register" exact element={<Register />} />
         </Routes>
       </Router>
+      <Scrollpop />
     </>
   );
 };
