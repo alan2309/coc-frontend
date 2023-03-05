@@ -10,7 +10,7 @@ export default function Login() {
   const [values, setValues] = useState({ username: "", password: "" });
 
   useEffect(() => {
-    
+
   }, []);
 
   const handleChange = (event) => {
@@ -20,10 +20,10 @@ export default function Login() {
   const validateForm = () => {
     const { username, password } = values;
     if (username === "") {
-    //  toast.error("Email and Password is required.", toastOptions);
+      //  toast.error("Email and Password is required.", toastOptions);
       return false;
     } else if (password === "") {
-    //  toast.error("Email and Password is required.", toastOptions);
+      //  toast.error("Email and Password is required.", toastOptions);
       return false;
     }
     return true;
@@ -33,10 +33,12 @@ export default function Login() {
     event.preventDefault();
     if (validateForm()) {
       const { username, password } = values;
-      const { data } = await axiosInstance.post("/login/", {data:{
-        username,
-        password,
-      }});
+      const { data } = await axiosInstance.post("/login/", {
+        data: {
+          username,
+          password,
+        }
+      });
 
       const data1 = await axios.post("http://localhost:5000/api/auth/login", {
         username,
@@ -55,9 +57,9 @@ export default function Login() {
         navigate("/");
       }
       console.log(data)
-      sessionStorage.setItem("user_data",JSON.stringify(data))
-    //  navigate("/")
-     
+      sessionStorage.setItem("user_data", JSON.stringify(data))
+      //  navigate("/")
+
     }
   };
 
@@ -66,8 +68,8 @@ export default function Login() {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h1>TripChat</h1>
+            {/* <img src={Logo} alt="logo" /> */}
+            <h1 className="fw-bold" style={{ color: "#333333" }}>Trippling<i class="fa-solid fa-mountain-sun"></i></h1>
           </div>
           <input
             type="text"
@@ -83,7 +85,7 @@ export default function Login() {
             onChange={(e) => handleChange(e)}
           />
           <button type="submit">Log In</button>
-          <span>
+          <span style={{ color: "#333333" }}>
             Don't have an account ? <Link to="/register">Create One.</Link>
           </span>
         </form>
@@ -100,7 +102,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #FFFFFF;
   .brand {
     display: flex;
     align-items: center;
@@ -119,25 +121,25 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #F7F7F7;
     border-radius: 2rem;
     padding: 5rem;
   }
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #4e0eff;
+    border: 0.1rem solid #000000;
     border-radius: 0.4rem;
     color: white;
     width: 100%;
     font-size: 1rem;
     &:focus {
-      border: 0.1rem solid #997af0;
+      border: 0.1rem solid #000000;
       outline: none;
     }
   }
   button {
-    background-color: #4e0eff;
+    background-color: #333333;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -147,14 +149,14 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #333333;
     }
   }
   span {
     color: white;
     text-transform: uppercase;
     a {
-      color: #4e0eff;
+      color: #333333;
       text-decoration: none;
       font-weight: bold;
     }
