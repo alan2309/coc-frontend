@@ -8,7 +8,7 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentSelected, setCurrentSelected] = useState(undefined);
   async function newUse(){
     const data = await JSON.parse(
-        localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+        sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
       );
       setCurrentUserName(data.username);
       setCurrentUserImage(data.avatarImage);
@@ -22,7 +22,7 @@ export default function Contacts({ contacts, changeChat }) {
   };
   return (
     <>
-      {currentUserImage && currentUserImage && (
+      {  (
         <Container>
           <div className="brand">
             <img src={Logo} alt="logo" />

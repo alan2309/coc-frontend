@@ -22,7 +22,7 @@ export default function SetAvatar() {
   };
 
   useEffect( () => {
-    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
+    if (!sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
       navigate("/login");
   }, []);
 
@@ -31,7 +31,7 @@ export default function SetAvatar() {
       toast.error("Please select an avatar", toastOptions);
     } else {
       const user = await JSON.parse(
-        localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+        sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
       );
 
       const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
@@ -41,7 +41,7 @@ export default function SetAvatar() {
       if (data.isSet) {
         user.isAvatarImageSet = true;
         user.avatarImage = data.image;
-        localStorage.setItem(
+        sessionStorage.setItem(
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(user)
         );

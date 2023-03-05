@@ -14,35 +14,37 @@ export default function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
-  async function newreuse(){
-    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-        const { data } = await axios.post("http://localhost:5000/api/auth/login", {
-            username:"hetvi",
-            password:"password@123",
-          });
-          if (data.status === false) {
-            //toast.error(data.msg, toastOptions);
-          }
-          if (data.status === true) {
-            localStorage.setItem(
-              process.env.REACT_APP_LOCALHOST_KEY,
-              JSON.stringify(data.user)
-            );
-    
-            //navigate("/");
-          }
+  async function newreuse() {
+    if (!sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+      const { data } = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          username: "hetvi",
+          password: "password@123",
+        }
+      );
+      if (data.status === false) {
+        //toast.error(data.msg, toastOptions);
+      }
+      if (data.status === true) {
+        sessionStorage.setItem(
+          process.env.REACT_APP_LOCALHOST_KEY,
+          JSON.stringify(data.user)
+        );
+
+        //navigate("/");
+      }
     } else {
       setCurrentUser(
         await JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+          sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
         )
       );
     }
   }
-  useEffect( () => {
-    console.log(!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
-    newreuse()
-   
+  useEffect(() => {
+    console.log(!sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+    newreuse();
   }, []);
   useEffect(() => {
     if (currentUser) {
@@ -51,19 +53,20 @@ export default function Chat() {
     }
   }, [currentUser]);
 
-
-  async function reUSe (){
+  async function reUSe() {
     if (currentUser) {
-        if (currentUser.isAvatarImageSet) {
-          const data = await axios.get(`http://localhost:5000/api/auth/getAllFrndsUsers/${currentUser._id}`);
-          setContacts(data.data);
-        } else {
-          navigate("/setAvatar");
-        }
-      }
+      //if (currentUser.isAvatarImageSet) {
+      const data = await axios.get(
+        `http://localhost:5000/api/auth/getAllFrndsUsers/${currentUser._id}`
+      );
+      setContacts(data.data);
+      //} else {
+      //  navigate("/setAvatar");
+      //}
+    }
   }
   useEffect(() => {
-    reUSe()
+    reUSe();
   }, [currentUser]);
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
@@ -83,9 +86,6 @@ export default function Chat() {
     </>
   );
 }
-
-
-
 
 const Container = styled.div`
   height: 100vh;

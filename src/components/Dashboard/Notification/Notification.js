@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -53,9 +54,11 @@ const Notification = () => {
                               onClick={(e) => {
                                 axiosInstance
                                   .post("/accept-request/", {
-                                    data: { uid: 3, email: res.email },
+                                    data: { uid: JSON.parse(sessionStorage.getItem("user_data"))?.id, email: res.email },
                                   })
                                   .then((res) => {
+
+                                    axios.post("https://localhost:5000/api/addFriend/",{myemail:JSON.parse(sessionStorage.getItem("user_data"))?.email,email:res.email})
                                     console.log(res.data);
                                   })
                                   .catch((err) => {

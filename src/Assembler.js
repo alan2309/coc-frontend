@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import MapData from "./components/MapData";
 import Chat from "./components/Chat/Chat";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 
 // import { AppBinderContext } from './AppBinderContext';
 
@@ -22,6 +24,8 @@ const Assembler = () => {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/mapdata" exact element={<MapData />} />
           <Route path="/chat" exact element={<Chat />} />
+          <Route path="/login" exact element={<Login />} />
+          <Route path="/register" exact element={<Register />} />
         </Routes>
       </Router>
     </>

@@ -7,11 +7,11 @@ export default function Logout() {
   const navigate = useNavigate();
   const handleClick = async () => {
     const id = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+      sessionStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     )._id;
     const data = await axios.get(`http://localhost:5000/api/auth/logout/${id}`);
     if (data.status === 200) {
-      localStorage.clear();
+      sessionStorage.clear();
       navigate("/login");
     }
   };
