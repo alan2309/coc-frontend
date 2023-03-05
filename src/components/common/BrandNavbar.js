@@ -22,7 +22,7 @@ const BrandNavbar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               {/* Left Links */}
-              <Nav.Link href="/dash">Dash</Nav.Link>
+              {sessionStorage.getItem("user_data") !== null && sessionStorage.getItem("user_data") !== undefined && <Nav.Link href="/dash">Dash</Nav.Link>}
               {/*<Nav.Link href="/home">Home</Nav.Link>*/}
             </Nav>
 
