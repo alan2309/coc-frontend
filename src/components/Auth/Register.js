@@ -33,7 +33,7 @@ export default function Register() {
     confirmPassword: "",
   });
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -64,9 +64,10 @@ export default function Register() {
     <>
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
-          <div className="brand">
+          <div className="brand d-flex flex-column">
             {/*<img src={Logo} alt="logo" />*/}
-            <h1>TripChat</h1>
+            <h1 className="fw-bold">Trippling<i class="fa-solid fa-mountain-sun"></i></h1>
+            <h3 className="fw-bold" style={{ color: "#FFFFFF" }}>Register</h3>
           </div>
           <input
             type="text"
@@ -116,11 +117,11 @@ export default function Register() {
             name="phone"
             onChange={(e) => handleChange(e)}
           />
-          <Row>
+          <div className="d-flex justify-content-between align-items-center gap-3">
             {intrestData.map((obj, ind) => {
               return (
                 <>
-                  <Col md={3}>
+                  <div className="">
                     <button
                       onClick={(e) => {
                         let ob = intrestData;
@@ -133,11 +134,11 @@ export default function Register() {
                     >
                       {obj}
                     </button>
-                  </Col>
+                  </div>
                 </>
               );
             })}
-          </Row>
+          </div>
           <input
             type="password"
             placeholder="Password"
@@ -153,7 +154,7 @@ export default function Register() {
           />
           <button type="submit">Create User</button>
           <span>
-            Already have an account ? <Link to="/login">Login.</Link>
+            Already have an account ? <Link to="/login" style={{ color: '#FFFFFF' }}>Login.</Link>
           </span>
         </form>
       </FormContainer>
@@ -162,6 +163,7 @@ export default function Register() {
 }
 
 const FormContainer = styled.div`
+  padding-top: 3rem;  
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -186,26 +188,26 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #333333;
     border-radius: 2rem;
     padding: 3rem 5rem;
   }
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #4e0eff;
+    border: 0.1rem solid #FFFFFF;
     border-radius: 0.4rem;
     color: white;
     width: 100%;
     font-size: 1rem;
     &:focus {
-      border: 0.1rem solid #997af0;
+      border: 0.1rem solid #FFFFFF;
       outline: none;
     }
   }
   button {
-    background-color: #4e0eff;
-    color: white;
+    background-color: #FFFFFF;
+    color: #333333;
     padding: 1rem 2rem;
     border: none;
     font-weight: bold;
@@ -214,7 +216,7 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #FFFFFF;
     }
   }
   span {
