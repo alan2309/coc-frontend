@@ -5,6 +5,7 @@ import styles from "./Dashboard.module.css";
 import cx from "classnames";
 import MyTrips from './MyTrips/MyTrips';
 import Notification from './Notification/Notification';
+import Chat from '../Chat/Chat';
 
 const Dashboard = () => {
 
@@ -71,6 +72,7 @@ const Dashboard = () => {
                     <Tab.Pane eventKey={item.title} key={key} className='p-0'>
                       {item.title === 'My Trips' && <MyTrips />}
                       {item.title === 'Notification' && <Notification />}
+                      {item.title === 'Chats' && <Chat />}
                     </Tab.Pane>
                   ))
                 }
