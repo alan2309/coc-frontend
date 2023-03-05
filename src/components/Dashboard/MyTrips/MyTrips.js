@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Row, Tab, Tabs } from "react-bootstrap";
+import { Button, Row, Tab, Tabs, Table, Container } from "react-bootstrap";
 import axiosInstance from "../../../axiosInstance";
 import Companion from "../../Home/Companion/Companion";
 import MyTripsCard from "./MyTripsCard";
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+//import MapComponent from "./MapComponent";
 const MyTrips = () => {
   const Trips = [
     { title: "Ongoing" },
@@ -32,6 +34,16 @@ const MyTrips = () => {
 
     return () => {};
   }, []);
+  //  const render = (status) => {
+  //    switch (status) {
+  //      case Status.LOADING:
+  //        return null;
+  //      case Status.FAILURE:
+  //        return <h1>Error occured</h1>;
+  //      case Status.SUCCESS:
+  //        return <MapComponent />;
+  //    }
+  //  };
 
   const setData = async (obj) => {
     setHid(1);
@@ -62,7 +74,7 @@ const MyTrips = () => {
         <Tabs
           defaultActiveKey="Ongoing"
           id="uncontrolled-tab-example"
-          className="mb-3"
+          className="mb-3 d-flex align-items-center justify-content-center my-5"
           variant="pills"
         >
           {Trips.map((item, key) => (
@@ -71,19 +83,25 @@ const MyTrips = () => {
                 {item.title === "Ongoing" &&
                   ongoing.map((obj, ind) => {
                     return (
-                      <MyTripsCard key={ind} obj={obj} setData={setData} />
+                      <Container>
+                        <MyTripsCard key={ind} obj={obj} setData={setData} />
+                      </Container>
                     );
                   })}
                 {item.title === "Upcoming" &&
                   upcoing.map((obj, ind) => {
                     return (
-                      <MyTripsCard key={ind} obj={obj} setData={setData} />
+                      <Container>
+                        <MyTripsCard key={ind} obj={obj} setData={setData} />
+                      </Container>
                     );
                   })}
                 {item.title === "Completed" &&
                   completed.map((obj, ind) => {
                     return (
-                      <MyTripsCard key={ind} obj={obj} setData={setData} />
+                      <Container>
+                        <MyTripsCard key={ind} obj={obj} setData={setData} />
+                      </Container>
                     );
                   })}
               </Row>
@@ -91,10 +109,61 @@ const MyTrips = () => {
           ))}
         </Tabs>
       </div>
+
+      <Container>
       <div style={{ display: hid == 1 ? "block" : "none" }}>
+        <h1 className="fs-1 text-center fw-bold mt-5">{tripDetail.name}</h1>
+        <h3 className="text-center fw-bold">{tripDetail.loc_name}</h3>
+
+        <h4 className="fw-bold text-center mb-3 mt-5 p-3">
+          My Internary
+        </h4>
+
+        <div className="px-5">
+          <Table  hover className="table-light w-50 mx-auto">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {console.log(tripDetail)}
+              {hid &&
+                tripDetail?.itinerary.map((obj, ind) => {
+                    return (
+                        <>
+                      {obj.map((obj1, indd) => {
+                          return (
+                              <tr key={indd}>
+                            <td>
+                              {(ind + 1) * (indd + 1) === ind + 1 &&
+                                `Day ${ind + 1}`}
+                            </td>
+                            <td>{obj1.name}</td>
+                            {/* <p>{obj1.name} </p> */}
+                          </tr>
+                        );
+                    })}
+                    </>
+                  );
+                })}
+            </tbody>
+          </Table>
+          {/*<p>{tripDetail.start_date}</p>
+          <p>{tripDetail.end_date}</p>*/}
+        </div>
+        <h4 className="fw-bold text-center mb-3 mt-5 p-3">
+          Potential Companions
+        </h4>
+        <Container>
+            <Companion companionData={companions}></Companion>
+        </Container>
+        {/*<Wrapper apiKey={"AIzaSyC_2ABFZTAwaDLCgP5DKpNM_xrCJvX66Nc"} render={render} />*/}
+      </div>
+      </Container>
+      <div className="text-center my-2">
         <Button onClick={(e) => setHid(0)}>Back</Button>
-        <h1>{tripDetail.name}</h1>
-        <Companion companionData={companions}></Companion>
       </div>
     </>
   );
