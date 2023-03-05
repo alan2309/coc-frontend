@@ -1,0 +1,27 @@
+@media screen and (max-width: 768px) {
+  .topDiv{
+    width: 75%!important;
+  }
+  
+  .bottomDiv{
+    width: 75%!important;
+  }
+
+  .iteDiv{
+    width: 75%!important;
+  }
+}
+
+@media screen and (max-width: 429px) {
+  .topDiv{
+    width: 95%!important;
+  }
+  
+  .bottomDiv{
+    width: 95%!important;
+  }
+
+  .iteDiv{
+    width: 95%!important;
+  }
+}

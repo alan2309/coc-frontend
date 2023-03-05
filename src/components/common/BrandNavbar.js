@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const BrandNavbar = () => {
   const MainNavbar = () => {
     return (
-      <Navbar collapseOnSelect className='sticky-top' expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect className='sticky-top shadow' expand="lg" bg="light" variant="light">
         <Container fluid>
           <Navbar.Brand href="/">Tripling</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

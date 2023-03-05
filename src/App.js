@@ -1,5 +1,6 @@
 import React from "react";
 import AppBinder from "./AppBinder";
+import "./App.css"
 
 function App() {
 
