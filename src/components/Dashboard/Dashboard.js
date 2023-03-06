@@ -22,12 +22,12 @@ const Dashboard = () => {
         linkTo: "",
         icon: <i className="fa-solid fa-envelope"></i>,
       },
-      {
-        id: 3,
-        title: "Profile",
-        linkTo: "",
-        icon: <i className="fa-solid fa-user"></i>,
-      },
+    //  {
+    //    id: 3,
+    //    title: "Profile",
+    //    linkTo: "",
+    //    icon: <i className="fa-solid fa-user"></i>,
+    //  },
       {
         id: 4,
         title: "Chats",
